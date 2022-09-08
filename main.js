@@ -8,8 +8,33 @@ const userName = document.querySelector("#username");
 const highScore = document.querySelector("#high-score");
 const score = document.querySelector("#score");
 
-startBtn.addEventListener("click", () => {
+let gameScore = 0;
 
+let interval = 1500;
+easyBtn.addEventListener("click", () => {
+    interval = 1500;
+    easyBtn.disabled = true
+    mediumBtn.disabled = false
+    hardBtn.disabled = false
+})
+mediumBtn.addEventListener("click", () => {
+    interval = 1000;
+    mediumBtn.disabled = true
+    easyBtn.disabled = false
+    hardBtn.disabled = false
+})
+hardBtn.addEventListener("click", () => {
+    interval = 500;
+    
+    hardBtn.disabled = true
+    easyBtn.disabled = false
+    mediumBtn.disabled = false
+})
+
+startBtn.addEventListener("click", () => {
+    // console.log("startBtn:",interval)
+    startBtn.disabled = true
+    stopBtn.disabled = false
     var _tick = setInterval(function () {
         const itemBallon = document.createElement("div");
         itemBallon.classList.add("ballon");
@@ -32,19 +57,32 @@ startBtn.addEventListener("click", () => {
 
 
         mainbox.appendChild(itemBallon);
-        let scoreNum =1;
+
         itemBallon.addEventListener("click", (e) => {
-            scoreNum +=3;
-            console.log(scoreNum)
-            score.innerHTML = scoreNum
             itemBallon.remove();
-            
+
+            if (interval == 1500) {
+                gameScore += 1;
+                score.innerHTML = gameScore
+            } else if (interval == 1000) {
+                gameScore += 2;
+                score.innerHTML = gameScore
+            } else if (interval == 500) {
+                gameScore += 3;
+                score.innerHTML = gameScore
+            }
+
+
+
 
         })
-        
-    }, 1000)
+
+    }, interval)
     stopBtn.addEventListener("click", () => {
+        startBtn.disabled = false
+        stopBtn.disabled = true
         clearInterval(_tick);
+        // console.log("stopbtn:",interval)
     })
 
 })

@@ -68,3 +68,11 @@
     height: 50px;
     background-color: #92da0b;
 }
+
+.control-btns button:disabled{
+    background-color: rgb(58, 58, 58);
+}
+
+.level-btns button:disabled{
+    background-color: #ff0f0f;
+}
