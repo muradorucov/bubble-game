@@ -1,23 +1,25 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
-.container{
+
+.container {
     width: 85%;
-    margin:0 auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
 }
 
-.col{
+.col {
     padding: 20px;
     margin: 10px;
     background-color: bisque;
     border: 3px solid rgb(204, 250, 0);
     border-radius: 5px;
 }
-.game-display{
+
+.game-display {
     width: 570px;
     height: 500px;
     position: relative;
@@ -26,28 +28,63 @@
     border-radius: 10px;
 }
 
-.ballon{
+.ballon {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background-color: blue;
     position: absolute;
-    top:400px;
+    top: 400px;
     right: 40px;
     cursor: pointer;
 }
-.first{
-    top:400px;
+
+.first {
+    top: 400px;
     right: 100px;
 }
-.two{
-    top:200px;
-    right:70px ;
+
+.two {
+    top: 200px;
+    right: 70px;
 }
-.three{
-    top:200px;
-    right:300px ;
+
+.three {
+    top: 200px;
+    right: 300px;
 }
+
+.user-name,.score,.high-score {
+    font-size: 29px;
+    font-family: cursive;
+    margin-bottom: 20px;
+}
+
+.control-btns{
+    margin: 40px 0;
+}
+
+
+.game-management button{
+    cursor: pointer;
+    width: 48%;
+    height: 60px;
+    font-size: 18px;
+    background-color: #5664e0;
+    border: 1px solid rgb(63, 63, 253);
+    border-radius: 7px;
+    color: #fff;
+}
+.game-management button:active{
+    background-color: #0b23da;
+}
+.level-btns  button{
+    width: 32%;
+    height: 50px;
+    background-color: #92da0b;
+}
+
+
 /* .dash{
     display: flex;
     margin: 40px ;
