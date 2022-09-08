@@ -29,29 +29,14 @@
 }
 
 .ballon {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background-color: blue;
     position: absolute;
     top: 400px;
     right: 40px;
     cursor: pointer;
-}
-
-.first {
-    top: 400px;
-    right: 100px;
-}
-
-.two {
-    top: 200px;
-    right: 70px;
-}
-
-.three {
-    top: 200px;
-    right: 300px;
 }
 
 .user-name,.score,.high-score {
@@ -83,31 +68,3 @@
     height: 50px;
     background-color: #92da0b;
 }
-
-
-/* .dash{
-    display: flex;
-    margin: 40px ;
-    justify-content: space-around;
-}
-
-#bubble-box{
-    width: 300px;
-    height: 270px;
-    position: relative;
-    border: 1px solid blue;
-    border-radius: 10px;
-    
-}
-
-.bubble-item{
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    border-radius: 50%;
-}
-
-#start,#stop{
-    height: 20px;
-    width: 61px;
-} */
