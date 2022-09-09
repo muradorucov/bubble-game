@@ -17,6 +17,13 @@
     background-color: bisque;
     border: 3px solid rgb(204, 250, 0);
     border-radius: 5px;
+    position: relative;
+}
+
+.stop-overlay{
+    width: 570px;
+    height: 500px;
+    position: absolute;
 }
 
 .game-display {
@@ -69,6 +76,7 @@
 
 .game-management button:disabled{
     opacity: 0.2;
+    cursor: auto;
 }
 
 

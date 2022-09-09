@@ -1,4 +1,5 @@
 const mainbox = document.querySelector(".game-display");
+const overlay = document.querySelector(".stop-overlay");
 const startBtn = document.querySelector("#start");
 const stopBtn = document.querySelector("#stop");
 const resetBtn = document.querySelector("#reset");
@@ -9,7 +10,15 @@ const userName = document.querySelector("#username");
 const highScore = document.querySelector("#high-score");
 const score = document.querySelector("#score");
 
+let userNickName = prompt("adinizi daxil edin!");
+if(userNickName===null || userNickName.trim()==''){
+    userName.innerText="Anonim Gamer"  
+}else{
+    userName.innerText=userNickName
+}
+
 let gameScore = 0;
+let highGameScore = 0;
 
 let interval = 1500;
 
@@ -22,6 +31,8 @@ startBtn.addEventListener("click", () => {
     startBtn.disabled = true
     stopBtn.disabled = false
     resetBtn.disabled = true;
+
+    overlay.style.zIndex = "-1";
 
     var _tick = setInterval(function () {
         const itemBallon = document.createElement("div");
@@ -59,7 +70,12 @@ startBtn.addEventListener("click", () => {
                 gameScore += 3;
                 score.innerHTML = gameScore
             }
+
+
         })
+
+
+
 
     }, interval)
     stopBtn.addEventListener("click", () => {
@@ -68,17 +84,23 @@ startBtn.addEventListener("click", () => {
         resetBtn.disabled = false;
 
         clearInterval(_tick);
+
+        overlay.style.zIndex = "1"
     })
 
     easyBtn.addEventListener("click", () => {
         clearInterval(_tick);
+        overlay.style.zIndex = "1"
     })
     mediumBtn.addEventListener("click", () => {
         clearInterval(_tick);
+        overlay.style.zIndex = "1"
     })
     hardBtn.addEventListener("click", () => {
         clearInterval(_tick);
+        overlay.style.zIndex = "1"
     })
+
 })
 
 
@@ -111,6 +133,11 @@ hardBtn.addEventListener("click", () => {
 
 resetBtn.addEventListener("click", () => {
 
+    if (gameScore > highGameScore) {
+        highGameScore = gameScore;
+        highScore.innerHTML = highGameScore
+    }
+
     var child = mainbox.lastElementChild;
     while (child) {
         mainbox.removeChild(child);
@@ -120,3 +147,5 @@ resetBtn.addEventListener("click", () => {
     gameScore = 0;
     score.innerHTML = gameScore
 })
+
+
