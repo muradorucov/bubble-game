@@ -45,11 +45,6 @@
     margin-bottom: 20px;
 }
 
-.control-btns{
-    margin: 40px 0;
-}
-
-
 .game-management button{
     cursor: pointer;
     width: 48%;
@@ -60,19 +55,26 @@
     border-radius: 7px;
     color: #fff;
 }
-.game-management button:active{
-    background-color: #0b23da;
+
+
+.control-btns, .level-btns{
+    margin: 40px 0;
 }
+
 .level-btns  button{
     width: 32%;
     height: 50px;
     background-color: #92da0b;
 }
 
-.control-btns button:disabled{
-    background-color: rgb(58, 58, 58);
+.game-management button:disabled{
+    opacity: 0.2;
 }
 
-.level-btns button:disabled{
-    background-color: #ff0f0f;
+
+
+.reset-btn button{
+    width: 100%;
+    height: 50px;
+    background-color: #ce3e3e;
 }

@@ -1,6 +1,7 @@
 const mainbox = document.querySelector(".game-display");
 const startBtn = document.querySelector("#start");
 const stopBtn = document.querySelector("#stop");
+const resetBtn = document.querySelector("#reset");
 const easyBtn = document.querySelector("#easy");
 const mediumBtn = document.querySelector("#medium");
 const hardBtn = document.querySelector("#hard");
@@ -11,30 +12,17 @@ const score = document.querySelector("#score");
 let gameScore = 0;
 
 let interval = 1500;
-easyBtn.addEventListener("click", () => {
-    interval = 1500;
-    easyBtn.disabled = true
-    mediumBtn.disabled = false
-    hardBtn.disabled = false
-})
-mediumBtn.addEventListener("click", () => {
-    interval = 1000;
-    mediumBtn.disabled = true
-    easyBtn.disabled = false
-    hardBtn.disabled = false
-})
-hardBtn.addEventListener("click", () => {
-    interval = 500;
-    
-    hardBtn.disabled = true
-    easyBtn.disabled = false
-    mediumBtn.disabled = false
-})
+
+stopBtn.disabled = true;
+resetBtn.disabled = true;
+
 
 startBtn.addEventListener("click", () => {
     // console.log("startBtn:",interval)
     startBtn.disabled = true
     stopBtn.disabled = false
+    resetBtn.disabled = true;
+
     var _tick = setInterval(function () {
         const itemBallon = document.createElement("div");
         itemBallon.classList.add("ballon");
@@ -71,18 +59,64 @@ startBtn.addEventListener("click", () => {
                 gameScore += 3;
                 score.innerHTML = gameScore
             }
-
-
-
-
         })
 
     }, interval)
     stopBtn.addEventListener("click", () => {
         startBtn.disabled = false
         stopBtn.disabled = true
+        resetBtn.disabled = false;
+
         clearInterval(_tick);
-        // console.log("stopbtn:",interval)
     })
 
+    easyBtn.addEventListener("click", () => {
+        clearInterval(_tick);
+    })
+    mediumBtn.addEventListener("click", () => {
+        clearInterval(_tick);
+    })
+    hardBtn.addEventListener("click", () => {
+        clearInterval(_tick);
+    })
+})
+
+
+easyBtn.addEventListener("click", () => {
+    interval = 1500;
+    easyBtn.disabled = true
+    mediumBtn.disabled = false
+    hardBtn.disabled = false
+    startBtn.disabled = false
+    stopBtn.disabled = true
+})
+mediumBtn.addEventListener("click", () => {
+    interval = 1000;
+    mediumBtn.disabled = true
+    easyBtn.disabled = false
+    hardBtn.disabled = false
+    startBtn.disabled = false
+    stopBtn.disabled = true
+})
+hardBtn.addEventListener("click", () => {
+    interval = 500;
+    hardBtn.disabled = true
+    easyBtn.disabled = false
+    mediumBtn.disabled = false
+    startBtn.disabled = false
+    stopBtn.disabled = true
+})
+
+
+
+resetBtn.addEventListener("click", () => {
+
+    var child = mainbox.lastElementChild;
+    while (child) {
+        mainbox.removeChild(child);
+        child = mainbox.lastElementChild;
+    }
+    resetBtn.disabled = true;
+    gameScore = 0;
+    score.innerHTML = gameScore
 })
