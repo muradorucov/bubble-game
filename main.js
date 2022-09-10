@@ -10,24 +10,30 @@ const userName = document.querySelector("#username");
 const highScore = document.querySelector("#high-score");
 const score = document.querySelector("#score");
 
-let userNickName = prompt("adinizi daxil edin!");
-if(userNickName===null || userNickName.trim()==''){
-    userName.innerText="Anonim Gamer"  
-}else{
-    userName.innerText=userNickName
+stopBtn.disabled = true;
+resetBtn.disabled = true;
+
+const audio = new Audio('./sound/bubble-sound.wav');
+
+function userNameFunc() {
+    let userNickName = prompt('Please enter your name... \nIf you dont enter it, "Anonym Gamer" will be selected!');
+    if (userNickName === null || userNickName.trim() == '') {
+        userName.innerText = "Anonym Gamer"
+    } else {
+        userName.innerText = userNickName
+    }
 }
+userNameFunc();
 
 let gameScore = 0;
 let highGameScore = 0;
 
 let interval = 1500;
 
-stopBtn.disabled = true;
-resetBtn.disabled = true;
+
 
 
 startBtn.addEventListener("click", () => {
-    // console.log("startBtn:",interval)
     startBtn.disabled = true
     stopBtn.disabled = false
     resetBtn.disabled = true;
@@ -58,6 +64,7 @@ startBtn.addEventListener("click", () => {
         mainbox.appendChild(itemBallon);
 
         itemBallon.addEventListener("click", (e) => {
+            audio.play();
             itemBallon.remove();
 
             if (interval == 1500) {
@@ -78,6 +85,8 @@ startBtn.addEventListener("click", () => {
 
 
     }, interval)
+
+
     stopBtn.addEventListener("click", () => {
         startBtn.disabled = false
         stopBtn.disabled = true
